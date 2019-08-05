@@ -9,7 +9,7 @@ interface ScoreBoxProps {
 
 export default function ScoreBox(props: ScoreBoxProps){
   const type: string = types[props.type][props.activeFrame];
-  return <View style={styles.container, styles[type]}><Text>{(props.score || 0)}</Text></View>
+  return <View style={styles.container, styles[type]}><Text>{props.score}</Text></View>
 }
 
 const types: string[][] = [

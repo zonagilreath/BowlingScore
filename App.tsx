@@ -4,15 +4,13 @@ import ScoreBoard from './components/ScoreBoard'
 import Frame from './components/Frame';
 
 export default function App() {
-  const frames = [];
-  const testFrame = (<Frame frameNum={0} testScores={[7, 3]} frames={frames} subTotal={10}/>)
-  frames.push(testFrame);
   return (
-
     <View style={styles.container}>
-      <ScoreBoard />
-      <View style={styles.controller}>
-        {testFrame}
+      <View style={{flex:1}}>
+        <Text></Text>
+      </View>
+      <View style={{flex:9}}>
+        <ScoreBoard />
       </View>
     </View>
   );

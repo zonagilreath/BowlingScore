@@ -3,8 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function ScoreBox(props: ScoreBoxProps){
   const type: string = types[props.type][props.activeFrame];
-  let score = props.score ? props.score : ' - ';
-  return <View style={styles.container, styles[type]}><Text>{score}</Text></View>
+  const score = props.score ? props.score : ' - ';
+  const textStyle = props.activeFrame ? 'bigText' : 'smallText';
+  return <View style={styles[type]}><Text style={styles[textStyle]}>{score}</Text></View>
 }
 
 const types = [
@@ -14,33 +15,52 @@ const types = [
 ]
 
 const styles = StyleSheet.create({
-  container: {
+  leftBox: {
+    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  leftBox: {
-    flex: 1,
-  },
   leftBoxActive: {
     flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   rightBox: {
     flex: 1,
     borderWidth: 2,
-    borderColor: '#000'
+    borderColor: '#000',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   rightBoxActive: {
     flex: 1,
     borderWidth: 2,
-    borderColor: '#000'
+    borderColor: '#000',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   mainBox: {
-    flex: 2,
-    width: 150
+    flex: 2.25,
+    width: 150,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   mainBoxActive: {
-    flex: 1,
-    width: 500
-  } 
+    flex: 2.25,
+    width: 400,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  bigText: {
+    fontSize: 50
+  },
+  smallText: {
+    fontSize: 20
+  }
 });

@@ -2,23 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ScoreBox from './atoms/ScoreBox';
 
-// interface FrameProps {
-//   frameNum: number;
-//   frames: Frame[];
-//   subTotal: number;
-//   testScores?: number[]; 
-// }
-
-// interface FrameState {
-//   frameNum: number;
-//   started: boolean;
-//   score1: number;
-//   score2: number;
-//   score3: number;
-//   subTotal: number;
-//   activeFrame: number;
-// }
-
 export default function Frame(props){
     console.log(props)
     const active: number = props.activeFrame ? 1 : 0;
@@ -49,6 +32,7 @@ export default function Frame(props){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    minWidth: 150,
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#000',

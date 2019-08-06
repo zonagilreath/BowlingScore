@@ -11,7 +11,9 @@ export default function App() {
 
     <View style={styles.container}>
       <ScoreBoard />
-      {testFrame}
+      <View style={styles.controller}>
+        {testFrame}
+      </View>
     </View>
   );
 }
@@ -24,6 +26,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 4,
     borderColor: '#000',
+    justifyContent: 'center',
+  },
+  controller: {
+    flex: 3,
+    alignItems: 'center',
     justifyContent: 'center',
   },
   text: {

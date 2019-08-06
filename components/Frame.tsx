@@ -2,45 +2,30 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import ScoreBox from './atoms/ScoreBox';
 
-interface FrameProps {
-  frameNum: number;
-  frames: Frame[];
-  subTotal: number;
-  testScores?: number[]; 
-}
+// interface FrameProps {
+//   frameNum: number;
+//   frames: Frame[];
+//   subTotal: number;
+//   testScores?: number[]; 
+// }
 
-interface FrameState {
-  frameNum: number;
-  started: boolean;
-  score1: number;
-  score2: number;
-  score3: number;
-  subTotal: number;
-  activeFrame: number;
-}
+// interface FrameState {
+//   frameNum: number;
+//   started: boolean;
+//   score1: number;
+//   score2: number;
+//   score3: number;
+//   subTotal: number;
+//   activeFrame: number;
+// }
 
-export default class Frame extends React.Component<FrameProps, FrameState> {
-  constructor(props: FrameProps){
-    super(props)
-    this.state = {
-      frameNum: props.frameNum,
-      started: false,
-      score1: null,
-      score2: null,
-      score3: null,
-      subTotal: props.subTotal,
-      activeFrame: 0
-    };
-
-  }
-
-  render(){
-    const active: number = this.state.activeFrame ? 1 : 0;
-    const score1repr: string = this.state.score1 === 10 ? 'X' : `${this.state.score1}`;
-    const score2repr: string = (this.state.score1 === 10 &&this.state.score2 === 10) ? 'X' : this.state.score1 + this.state.score2 === 10 ? '/' : `${this.state.score2}`;
-    const score3repr: string = (this.state.score2 === 10 &&this.state.score3 === 10) ? 'X' : this.state.score2 + this.state.score3 === 10 ? '/' : `${this.state.score3}`;
-
-    const topRow = (this.state.frameNum === 9) ? (
+export default function Frame(props){
+    console.log(props)
+    const active: number = props.activeFrame ? 1 : 0;
+    const score1repr: string = props.score1 === 10 ? 'X' : props.score1;
+    const score2repr: string = (props.score1 === 10 && props.score2 === 10) ? 'X' : props.score1 + props.score2 === 10 ? '/' : props.score2;
+    const score3repr: string = (props.score2 === 10 && props.score3 === 10) ? 'X' : props.score2 + props.score3 === 10 ? '/' : props.score3;
+    const topRow = (props.frameNum === 9) ? (
       <View style={styles.topRow}>
         <ScoreBox score={score1repr} type={1} activeFrame={active} />
         <ScoreBox score={score2repr} type={1} activeFrame={active} />
@@ -48,20 +33,17 @@ export default class Frame extends React.Component<FrameProps, FrameState> {
       </View>
     ) : (
       <View style={styles.topRow}>
-        <ScoreBox score={null} type={0} activeFrame={active} />
+        <ScoreBox score={' '} type={0} activeFrame={active} />
         <ScoreBox score={score1repr} type={0} activeFrame={active} />
         <ScoreBox score={score2repr} type={1} activeFrame={active} />
       </View>
     )
-
-    return (
-      <View style={styles.container}>
-        {topRow}
-        <ScoreBox score={this.state.subTotal} type={2} activeFrame={active} />
-      </View>
-    )
-  }
-
+  return (
+    <View style={styles.container}>
+      {topRow}
+      <ScoreBox score={props.subTotal} type={2} activeFrame={active} />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({

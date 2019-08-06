@@ -3,7 +3,6 @@ import { StyleSheet, Text, ScrollView } from 'react-native';
 import AbstractFrame from '../utilities/AbstractFrame';
 import Frame from './Frame';
 
-
 export default class ScoreBoard extends React.Component{
   constructor(props){
     super(props);
@@ -23,9 +22,11 @@ export default class ScoreBoard extends React.Component{
         <Frame
           key={'frame_'+idx}
           frameNum={idx}
-          frames={this.state.frames}
-          subTotal={abstract.getSubTotal()}
-          testScores={[3,3,3]} />
+          frames={abstract.frames}
+          score1={abstract.score1}
+          score2={abstract.score2}
+          score3={abstract.score3}
+          subTotal={abstract.getSubTotal()}/>
       ))}
       </ScrollView>
     )
